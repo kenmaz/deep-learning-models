@@ -286,7 +286,7 @@ def ResNet50(include_top=True, weights='imagenet',
 
 
 if __name__ == '__main__':
-    model = ResNet50(include_top=True, weights='imagenet')
+    model = ResNet50(weights=None)
 
     img_path = 'elephant.jpg'
     img = image.load_img(img_path, target_size=(224, 224))
@@ -297,3 +297,5 @@ if __name__ == '__main__':
 
     preds = model.predict(x)
     print('Predicted:', decode_predictions(preds))
+
+    model.save('resnet50_model.h5')
